@@ -1,0 +1,91 @@
+﻿
+Users
+
+User Creation
+User Login //DONE
+Check User Name //DONE
+Check User Email
+User Set Info
+Follow User
+/user/addcredits
+User's Trips //DONE IN OLD CODE
+User's Info
+User's Photos
+User's Followers
+People a User is following
+User's Favorite Trips // DONE
+
+
+Trips
+
+Trip Creation
+/trip/setgpx
+Media Upload
+Add Favorite Trip
+/trip/addcomment
+/trip/vote
+Searching Trips // done in old code
+User's Trips // done in old code
+Single Trip // DONE
+Trip's Pictures
+Trip's Tracks
+Trip's Waypoints
+Trip's Data
+Trip's Comments
+/trip/edit
+User's Favorite Trips
+/trip/addfavorite
+/trip/removefavorite
+/trip/delete
+/trip/removepicture
+/trip/removevideo
+
+
+Tracks
+
+/track/setgpx
+/track/create
+/track/edit
+
+
+Waypoints
+
+/waypoint/create
+/waypoint/edit
+Pictures
+Media Upload
+/picture/addcomment
+/picture/vote
+/picture/comments
+/picture/edit
+
+
+Videos
+
+Media Upload
+/video/addcomment
+/video/vote
+/video/comments
+
+
+Groups
+
+/group/addtrip
+/group/join
+
+Guides
+/guide/vote
+/guide/addcomment
+/guide/search
+/guide/data (get a guide's data
+/guide/download
+/guide/deletedownload
+/user/purchases
+
+
+Destinations
+
+/destination/index
+/destination/set
+Searching
+/index/search (combined search)
