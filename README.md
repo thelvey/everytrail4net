@@ -46,7 +46,7 @@ A UserLoginResponse object containing the status of the request and the user's I
 
 ```csharp
 using EveryTrailNET.Core;
-using EveryTrailNET.Core.QueryResponse
+using EveryTrailNET.Core.QueryResponse;
 ...
  UserLoginResponse response = Actions.UserLogin(txtUserName.Text, txtPassword.Text);
 
