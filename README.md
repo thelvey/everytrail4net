@@ -34,14 +34,14 @@ using EveryTrailNET.Core.QueryResponse
 ...
  UserLoginResponse response = Actions.UserLogin(txtUserName.Text, txtPassword.Text);
 
-        if (response.Status)
-        {
-            ltlResponse.Text = "Successful Login. User id is " + response.UserID;
-        }
-        else
-        {
-            ltlResponse.Text = "Login failed";
-        }
+  if (response.Status)
+  {
+      ltlResponse.Text = "Successful Login. User id is " + response.UserID;
+  }
+  else
+  {
+      ltlResponse.Text = "Login failed";
+  }
 
 ```
 
