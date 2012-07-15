@@ -15,7 +15,7 @@ The Tests project contains unit tests enforcing the expect behavior of these met
 Available Methods
 -----------------
 
-*UserLogin*
+#### UserLogin
 
 Attempt to log in a user
 
