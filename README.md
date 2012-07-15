@@ -12,6 +12,22 @@ The best source of documentation and expected behavior should be contained withi
 included in the solution is a test harness created to demonstrate how to consume the available methods of the library.
 The Tests project contains unit tests enforcing the expect behavior of these methods.
 
+Set up and Configuration
+------------------------
+
+Before using the EveryTrail API, you will need to register your application with EveryTrail in order to get an API key.
+
+Once you have obtained credentials, you must update the appropriate .config (web.config or app.config) file within your 
+application to include the following app settings:
+
+```xml
+  <appSettings>
+    <add key="Key" value="YourKeyHere"/>
+    <add key="Secret" value="YourKeySecretHere"/>
+    <add key="Version" value="3"/>
+  </appSettings>
+```
+
 Available Methods
 -----------------
 
