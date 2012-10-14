@@ -17,6 +17,20 @@ namespace EveryTrailNET.Objects
         public string UserName { get; set; }
         public Activity TripActivity { get; set; }
         public string Description { get; set; }
+        public string SnippetDescription
+        {
+            get
+            {
+                string result = Description;
+
+                if (Description.Length > 140)
+                {
+                    result = Description.Substring(0, 140) + "...";
+                }
+
+                return result;
+            }
+        }
         public string Tips { get; set; }
         public DateTime TripDate { get; set; }
         public DateTime TripUpdatedDate { get; set; }
@@ -72,7 +86,9 @@ namespace EveryTrailNET.Objects
             t.Description = tEle.Element("description").Value.Trim();
             t.Tips = tEle.Element("tips").Value.Trim();
 
-            t.TripDate = DateTime.Parse(tEle.Element("date").Value);
+            DateTime tripDate = DateTime.MinValue;
+            DateTime.TryParse(tEle.Element("date").Value, out tripDate);
+            t.TripDate = tripDate;
 
             if (tEle.Element("updated_date") != null)
             {
