@@ -76,7 +76,9 @@ namespace EveryTrailNET.Objects
 
             if (tEle.Element("updated_date") != null)
             {
-                t.TripUpdatedDate = DateTime.Parse(tEle.Element("updated_date").Value);
+                DateTime updatedDate = DateTime.MinValue;
+                DateTime.TryParse(tEle.Element("updated_date").Value, out updatedDate);
+                t.TripUpdatedDate = updatedDate;
             }
 
             t.Length = new Length();

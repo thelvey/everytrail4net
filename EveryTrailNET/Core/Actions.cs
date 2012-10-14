@@ -57,6 +57,18 @@ namespace EveryTrailNET.Core
         {
             return _implementation.GetUserFollowers(userId);
         }
+        public static SearchResponse Search(string searchQuery)
+        {
+            return _implementation.Search(searchQuery);
+        }
+        public static void TripData(int tripId)
+        {
+            _implementation.TripData(tripId);
+        }
+        public static void GetUserTrips(int userId)
+        {
+            _implementation.GetUserTrips(userId);
+        }
     }
     
 

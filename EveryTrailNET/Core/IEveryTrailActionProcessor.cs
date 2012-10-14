@@ -48,7 +48,7 @@ namespace EveryTrailNET.Core
         /// <param name="limit">The maximum number of results to return (default is 20)</param>
         /// <param name="start">The index of the first trip tor return from the result set. (default is 0)</param>
         /// <returns>List of Trip objects representing trips for this user</returns>
-        List<Trip> GetUserTrips(int userId, Actions.UserTripTypes tripType, int limit, int start);
+        List<Trip> GetUserTrips(int userId);
 
         /// <summary>
         /// Get users following a given user
@@ -72,6 +72,9 @@ namespace EveryTrailNET.Core
         /// <param name="userId">The id of the owner of the trips</param>
         /// <returns>List of Trip objects representing the given user's favorite Trips</returns>
         List<Trip> FavoriteTrips(int userId);
+
+        SearchResponse Search(string searchQuery, int guideLimit = 0);
+        void TripData(int tripId);
         #endregion
     }
 }

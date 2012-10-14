@@ -19,7 +19,60 @@ namespace EveryTrailNET.Core
         private static readonly string _checkUserEmail = "/api/user/checkemail";
         private static readonly string _userProfileInfo = "/api/user";
         private static readonly string _usersFollowers = "/api/user/followers";
+        private static readonly string _usersTrips = "/api/user/trips";
+        private static readonly string _tripData = "/api/trip/data";
+        private static readonly string _search = "/api/index/search/";
 
+        public void TripData(int tripId)
+        {
+            List<EveryTrailRequestParameter> requestParams = new List<EveryTrailRequestParameter>();
+            requestParams.Add(new EveryTrailRequestParameter() { Name = "trip_id", Value = tripId });
+
+            EveryTrailResponse response = EveryTrailRequest.MakeRequest(_tripData, requestParams);
+
+            System.IO.StreamReader sr = new System.IO.StreamReader(response.ResponseStream);
+
+            string tripData = sr.ReadToEnd();
+        }
+        public SearchResponse Search(string searchQuery, int guideLimit = 0)
+        {
+            SearchResponse result = new SearchResponse();
+
+            List<EveryTrailRequestParameter> requestParams = new List<EveryTrailRequestParameter>();
+            requestParams.Add(new EveryTrailRequestParameter(){ Name="q", Value=searchQuery});
+            requestParams.Add(new EveryTrailRequestParameter(){ Name="guide_limit", Value= guideLimit});
+
+            EveryTrailResponse response = EveryTrailRequest.MakeRequest(_search, requestParams);
+
+            if(response.SuccessfulConnection)
+            {
+                XDocument xResponse = XDocument.Load(response.ResponseStream);
+
+                XAttribute statusAttr = xResponse.Root.Attribute("status");
+
+                if (statusAttr != null)
+                {
+                    if (statusAttr.Value == "success")
+                    {
+                        result.Status = true;
+
+                        result.Trips = new List<Trip>();
+
+                        XElement tripsEle = xResponse.Root.Element("trips");
+
+                        IEnumerable<XElement> trips = tripsEle.Elements("trip");
+
+                        foreach (XElement tripEle in trips)
+                        {
+                            result.Trips.Add(Trip.FromXElement(tripEle));
+                        }
+                    }
+                }
+            }
+
+            return result;
+
+        }
         public UserLoginResponse UserLogin(string userName, string password)
         {
             UserLoginResponse result = new UserLoginResponse();
@@ -67,9 +120,19 @@ namespace EveryTrailNET.Core
         }
 
 
-        public List<Trip> GetUserTrips(int userId, Actions.UserTripTypes tripType, int limit, int start)
+        public List<Trip> GetUserTrips(int userId)
         {
-            throw new NotImplementedException();
+            List<EveryTrailRequestParameter> requestParams = new List<EveryTrailRequestParameter>();
+            requestParams = new List<EveryTrailRequestParameter>();
+            requestParams.Add(new EveryTrailRequestParameter() { Name = "user_id", Value = userId });
+
+            EveryTrailResponse response = EveryTrailRequest.MakeRequest(_usersTrips, requestParams);
+
+            if (response.SuccessfulConnection)
+            {
+                XDocument xResponse = XDocument.Load(response.ResponseStream);
+            }
+            return null;
         }
 
 

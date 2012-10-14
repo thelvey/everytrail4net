@@ -406,5 +406,10 @@ namespace Tests.User
             //int userId = 99442;
             //List<EveryTrailNET.Objects.Users.User> userFollowers = Actions.UserFollowers(userId);
         }
+        [Test]
+        public void GetUserTrips()
+        {
+            Actions.GetUserTrips(83315);
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EveryTrailNET.Objects.Users;
+using EveryTrailNET.Objects;
 
 namespace EveryTrailNET.Core.QueryResponse
 {
@@ -13,6 +14,11 @@ namespace EveryTrailNET.Core.QueryResponse
     public class UserLoginResponse : QueryResponse
     {
         public int UserID { get; set; }
+    }
+
+    public class SearchResponse : QueryResponse
+    {
+        public List<Trip> Trips { get; set; }
     }
 
     public enum CheckUserEmailStatus { Success, IncorrectEmailFormat, EmailAddressTaken, Unknown };
